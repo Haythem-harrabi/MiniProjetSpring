@@ -18,6 +18,7 @@ import java.util.List;
 @Setter
 public class Chambre implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long IdChambre;
     private long numeroChambre;
     @Enumerated(EnumType.STRING)

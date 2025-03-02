@@ -24,7 +24,7 @@ public class Bloc implements Serializable {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "bloc")
     private List<Chambre> chambres;
 
-    @ManyToOne
-    private Foyer foyer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Foyer foyerBloc;
 
 }

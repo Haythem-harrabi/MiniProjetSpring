@@ -1,9 +1,6 @@
 package com.example.springminiproject.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,11 +17,12 @@ import java.util.List;
 @Setter
 public class Foyer implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idFoyer;
     private String nomFoyer;
     private long capaciteFoyer;
 
-    @OneToMany(mappedBy = "foyer")
+    @OneToMany(mappedBy = "foyerBloc")
     private List<Bloc> blocs;
     @OneToOne(mappedBy = "foyer")
     private Universite universite;
