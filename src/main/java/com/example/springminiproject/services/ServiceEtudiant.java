@@ -45,4 +45,6 @@ public class ServiceEtudiant implements IEtudiantService {
     public void removeEtudiant(long idEtudiant) {
         etudiantRepository.delete(etudiantRepository.findByIdEtudiant(idEtudiant));
     }
+
+
 }

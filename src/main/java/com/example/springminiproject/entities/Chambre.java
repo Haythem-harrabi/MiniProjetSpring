@@ -10,16 +10,16 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
 
+@Entity
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
 public class Chambre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdChambre;
+    private long idChambre;
     private long numeroChambre;
     @Enumerated(EnumType.STRING)
     private TypeChambre TypeC;
@@ -29,4 +29,45 @@ public class Chambre implements Serializable {
 
     @ManyToOne
     private Bloc bloc;
+
+
+    public void setIdChambre(long idChambre) {
+        idChambre = idChambre;
+    }
+
+    public void setNumeroChambre(long numeroChambre) {
+        this.numeroChambre = numeroChambre;
+    }
+
+    public void setTypeC(TypeChambre typeC) {
+        TypeC = typeC;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        Reservations = reservations;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
+    }
+
+    public long getIdChambre() {
+        return idChambre;
+    }
+
+    public long getNumeroChambre() {
+        return numeroChambre;
+    }
+
+    public TypeChambre getTypeC() {
+        return TypeC;
+    }
+
+    public List<Reservation> getReservations() {
+        return Reservations;
+    }
+
+    public Bloc getBloc() {
+        return bloc;
+    }
 }

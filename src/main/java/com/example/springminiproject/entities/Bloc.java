@@ -16,7 +16,9 @@ import java.util.List;
 @Getter
 @Setter
 public class Bloc implements Serializable {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBloc;
     private String nomBloc;
     private long capaciteBloc;
@@ -27,4 +29,23 @@ public class Bloc implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     private Foyer foyerBloc;
 
+    public long getIdBloc() {
+        return idBloc;
+    }
+
+    public String getNomBloc() {
+        return nomBloc;
+    }
+
+    public long getCapaciteBloc() {
+        return capaciteBloc;
+    }
+
+    public List<Chambre> getChambres() {
+        return chambres;
+    }
+
+    public Foyer getFoyerBloc() {
+        return foyerBloc;
+    }
 }

@@ -1,12 +1,12 @@
 package com.example.springminiproject.services;
 
-import com.example.springminiproject.entities.Bloc;
 import com.example.springminiproject.entities.Reservation;
 import com.example.springminiproject.repositories.IReservationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,4 +33,10 @@ public class ServiceReservation implements IReservationService{
     public Reservation retrieveReservation(String idReservation) {
         return ReservationRepo.findByIdReservation(idReservation);
     }
+
+    @Override
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversite, String nomUniversite) {
+        return ReservationRepo.getReservationParAnneeUniversitaireEtNomUniversite(anneeUniversite, nomUniversite);
+    }
+
 }

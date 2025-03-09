@@ -29,4 +29,60 @@ public class Etudiant implements Serializable {
 
     @ManyToMany
     private List<Reservation> reservationsEtudiant;
+
+    public long getIdEtudiant() {
+        return idEtudiant;
+    }
+
+    public void setIdEtudiant(long idEtudiant) {
+        this.idEtudiant = idEtudiant;
+    }
+
+    public String getNomEt() {
+        return nomEt;
+    }
+
+    public void setNomEt(String nomEt) {
+        this.nomEt = nomEt;
+    }
+
+    public String getPrenomEt() {
+        return prenomEt;
+    }
+
+    public void setPrenomEt(String prenomEt) {
+        this.prenomEt = prenomEt;
+    }
+
+    public long getCin() {
+        return cin;
+    }
+
+    public void setCin(long cin) {
+        this.cin = cin;
+    }
+
+    public String getEcole() {
+        return ecole;
+    }
+
+    public void setEcole(String ecole) {
+        this.ecole = ecole;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public List<Reservation> getReservationsEtudiant() {
+        return reservationsEtudiant;
+    }
+
+    public void setReservationsEtudiant(List<Reservation> reservationsEtudiant) {
+        this.reservationsEtudiant = reservationsEtudiant;
+    }
 }
