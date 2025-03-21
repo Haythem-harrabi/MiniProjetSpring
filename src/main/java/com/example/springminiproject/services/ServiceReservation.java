@@ -66,14 +66,13 @@ public class ServiceReservation implements IReservationService{
             int currentCount = reservationRepo.countByChambre_Id(chambre.getIdChambre());
 
             if (currentCount < maxCapacite) {
-                // Créer la réservation
+
                 Reservation reservation = new Reservation();
                 reservation.setChambre(chambre);
                 reservation.setEtudiants(List.of(etudiant));
                 reservation.setEstValide(true);
                 reservation.setAnneeUniversitaire(getAnneeUniversitaireActuelle());
 
-                // Format numReservation : numChambre-nomBloc-anneeUniversitaire
                 reservation.setIdReservation(
                         chambre.getNumeroChambre() + "-" + bloc.getNomBloc() + "-" + reservation.getAnneeUniversitaire()
                 );
