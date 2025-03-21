@@ -17,4 +17,5 @@ public interface IReservationRepository extends JpaRepository<Reservation,String
     @Query("SELECT r FROM Reservation r WHERE r.anneeUniversitaire = :annee AND r.chambre.bloc.foyerBloc.universite.nomUniversite = :nomUniversite")
     List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(@Param("annee") Date anneeUniversite, @Param("nomUniversite") String nomUniversite);
 
+    int countByChambre_Id(long idChambre);
 }

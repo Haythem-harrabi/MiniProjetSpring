@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ServiceBloc implements IBlocService{
     @Autowired
     private IBlocRepository blocRepo;
+    @Autowired
+    private IChambreRepository chambreRepo;
     @Override
     public List<Bloc> retrieveBlocs() {
         return blocRepo.findAll();
@@ -42,5 +45,13 @@ public class ServiceBloc implements IBlocService{
     @Override
     public void removeBloc(long idBloc) {
         blocRepo.delete(blocRepo.findByIdBloc(idBloc));
+    }
+
+
+    @Override
+    public Bloc affecterChambresABloc(List<Long> numChambre, long idBloc) {
+        Bloc bloc = blocRepo.findByIdBloc(idBloc);
+        bloc.getChambres().addAll(numChambre.stream().map(id -> chambreRepo.findByIdChambre(id)).toList());
+        return bloc;
     }
 }

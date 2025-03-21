@@ -24,4 +24,5 @@ public interface IChambreRepository extends JpaRepository<Chambre,Long> {
     //Keywords q3
     List<Chambre> findByBlocIdBlocAndTypeC(long idBloc, TypeChambre typeChambre);
 
+    List<Chambre> findByBlocIdBloc(long idBloc);
 }

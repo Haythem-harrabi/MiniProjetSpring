@@ -1,8 +1,11 @@
 package com.example.springminiproject.services;
 
 
+import com.example.springminiproject.entities.Bloc;
 import com.example.springminiproject.entities.Foyer;
+import com.example.springminiproject.entities.Universite;
 import com.example.springminiproject.repositories.IFoyerRepository;
+import com.example.springminiproject.repositories.IUniversiteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +19,8 @@ public class ServiceFoyer implements IServiceFoyer{
 
     @Autowired
     private IFoyerRepository foyerRepository;
+    @Autowired
+    private IUniversiteRepository universiteRepo;
 
 
     @Override
@@ -46,4 +51,27 @@ public class ServiceFoyer implements IServiceFoyer{
         }
      return null;
     }
+
+    @Override
+    public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite){
+
+        if (foyer.getBlocs() != null) {
+            for (Bloc bloc : foyer.getBlocs()) {
+                bloc.setFoyerBloc(foyer);
+            }
+        }
+        Foyer savedFoyer = foyerRepository.save(foyer);
+        Universite universite = universiteRepo.findById(idUniversite)
+                .orElseThrow(() -> new RuntimeException("Université non trouvée"));
+
+        universite.setFoyer(savedFoyer);
+        savedFoyer.setUniversite(universite);
+
+        universiteRepo.save(universite);
+
+        return savedFoyer;
+
+    }
+
+
 }
