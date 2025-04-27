@@ -63,12 +63,11 @@ public class ServiceReservation implements IReservationService{
 
         for (Chambre chambre : chambres) {
             int maxCapacite = getCapaciteMaximale(chambre.getTypeC());
-            int currentCount = reservationRepo.countByChambre_Id(chambre.getIdChambre());
+            int nbrreservations= (int) chambre.getReservations().stream().count();
+            if (nbrreservations<maxCapacite) {
 
-            if (currentCount < maxCapacite) {
 
                 Reservation reservation = new Reservation();
-                reservation.setChambre(chambre);
                 reservation.setEtudiants(List.of(etudiant));
                 reservation.setEstValide(true);
                 reservation.setAnneeUniversitaire(getAnneeUniversitaireActuelle());
@@ -79,7 +78,8 @@ public class ServiceReservation implements IReservationService{
 
                 return reservationRepo.save(reservation);
             }
-        }
+            }
+
 
         throw new RuntimeException("Aucune chambre disponible dans le bloc");
 

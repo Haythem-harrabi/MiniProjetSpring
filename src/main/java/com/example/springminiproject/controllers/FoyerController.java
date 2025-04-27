@@ -13,6 +13,8 @@ import java.util.List;
 @RequestMapping("/foyer")
 @AllArgsConstructor
 public class FoyerController {
+
+    @Autowired
     private IServiceFoyer serviceFoyer;
 
     @PostMapping("/postfoyer")

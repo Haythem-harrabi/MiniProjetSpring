@@ -45,6 +45,11 @@ public class ServiceUniversite implements  IUniversiteService {
     }
 
     @Override
+    public Universite findByNomUniversite(String nom) {
+        return UniversiteRepo.findByNomUniversite(nom);
+    }
+
+    @Override
     public Universite affecterFoyerAUniversite (long idFoyer, String nomUniversite){
         Universite univ = this.findByNomUniversite(nomUniversite);
         univ.setFoyer(FoyerRepo.findByIdFoyer(idFoyer));

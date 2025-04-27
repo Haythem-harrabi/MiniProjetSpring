@@ -3,6 +3,7 @@ package com.example.springminiproject.controllers;
 import com.example.springminiproject.entities.Chambre;
 import com.example.springminiproject.services.IChambreService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RequestMapping("/chambre")
 @AllArgsConstructor
 public class ChambreController {
+    @Autowired
     IChambreService chambreService;
 
     @GetMapping("/getAllChambres")

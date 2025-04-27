@@ -15,10 +15,10 @@ public interface IChambreRepository extends JpaRepository<Chambre,Long> {
     Chambre findByIdChambre(long id);
 
     //JPQL q1
-    @Query("SELECT c FROM Chambre c WHERE c.TypeC = :type AND c.bloc.foyerBloc.universite.nomUniversite = :nomUniversite AND c.idChambre NOT IN (SELECT r.chambre.idChambre FROM Reservation r WHERE r.anneeUniversitaire = CURRENT_DATE)")
+    @Query("SELECT c FROM Chambre c WHERE c.typeC = :type AND c.bloc.foyerBloc.universite.nomUniversite = :nomUniversite AND NOT EXISTS ( SELECT r FROM Reservation r WHERE r MEMBER OF c.reservations AND FUNCTION('YEAR', r.anneeUniversitaire) = FUNCTION('YEAR', CURRENT_DATE)) ")
     List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(@Param("nomUniversite") String nomUniversite, @Param("type") TypeChambre type);
     //JPQL q3
-    @Query("SELECT c FROM Chambre c WHERE c.bloc.idBloc = :idBloc AND c.TypeC = :typeC")
+    @Query("SELECT c FROM Chambre c WHERE c.bloc.idBloc = :idBloc AND c.typeC = :typeC")
     List<Chambre> getChambresParBlocEtTypeJPQL(@Param("idBloc") long idBloc, @Param("typeC") TypeChambre typeC);
 
     //Keywords q3

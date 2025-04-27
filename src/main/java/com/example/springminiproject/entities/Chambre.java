@@ -10,9 +10,8 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.List;
 
-
-@Entity
 @Getter
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -21,15 +20,23 @@ public class Chambre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idChambre;
     private long numeroChambre;
+
     @Enumerated(EnumType.STRING)
-    private TypeChambre TypeC;
+    private TypeChambre typeC;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Reservation> Reservations;
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    private List<Reservation> reservations;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE} )
     private Bloc bloc;
 
+    public TypeChambre getTypeC() {
+        return typeC;
+    }
+
+    public void setTypeC(TypeChambre typeC) {
+        this.typeC = typeC;
+    }
 
     public void setIdChambre(long idChambre) {
         idChambre = idChambre;
@@ -39,12 +46,10 @@ public class Chambre implements Serializable {
         this.numeroChambre = numeroChambre;
     }
 
-    public void setTypeC(TypeChambre typeC) {
-        TypeC = typeC;
-    }
+
 
     public void setReservations(List<Reservation> reservations) {
-        Reservations = reservations;
+        reservations = reservations;
     }
 
     public void setBloc(Bloc bloc) {
@@ -59,12 +64,10 @@ public class Chambre implements Serializable {
         return numeroChambre;
     }
 
-    public TypeChambre getTypeC() {
-        return TypeC;
-    }
+
 
     public List<Reservation> getReservations() {
-        return Reservations;
+        return reservations;
     }
 
     public Bloc getBloc() {

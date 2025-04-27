@@ -48,4 +48,24 @@ public class Bloc implements Serializable {
     public Foyer getFoyerBloc() {
         return foyerBloc;
     }
+
+    public void setIdBloc(long idBloc) {
+        this.idBloc = idBloc;
+    }
+
+    public void setNomBloc(String nomBloc) {
+        this.nomBloc = nomBloc;
+    }
+
+    public void setCapaciteBloc(long capaciteBloc) {
+        this.capaciteBloc = capaciteBloc;
+    }
+
+    public void setChambres(List<Chambre> chambres) {
+        this.chambres = chambres;
+    }
+
+    public void setFoyerBloc(Foyer foyerBloc) {
+        this.foyerBloc = foyerBloc;
+    }
 }

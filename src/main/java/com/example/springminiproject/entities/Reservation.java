@@ -26,8 +26,7 @@ public class Reservation implements Serializable {
     @ManyToMany(mappedBy = "reservationsEtudiant")
     private List<Etudiant> etudiants;
 
-    @ManyToOne
-    private Chambre chambre;
+
 
 
     public String getIdReservation() {
