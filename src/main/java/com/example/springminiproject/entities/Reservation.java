@@ -24,6 +24,11 @@ public class Reservation implements Serializable {
     private boolean estValide;
 
     @ManyToMany(mappedBy = "reservationsEtudiant")
+    /* @JoinTable(
+        name = "etudiants_reservations",
+        joinColumns = @JoinColumn(name = "etudiant_id"),
+        inverseJoinColumns = @JoinColumn(name = "reservation_id")
+    )*/
     private List<Etudiant> etudiants;
 
 

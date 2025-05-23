@@ -43,8 +43,7 @@ L'advice @AfterReturning est exécuté après la fin normale de l'exécution d'u
  */
 
 /*
-"execution(Modifiers-pattern? Ret-type-pattern Declaring-type-pattern?Name-
-        pattern(param-pattern) Throws-pattern?)"
+"execution(Modifiers-pattern? Ret-type-pattern Declaring-type-pattern?Name-pattern(param-pattern) Throws-pattern?)"
         • “?” veut dire optionnel
         • Modifiers-pattern? : public, private ...
         • Ret-type-pattern : le type de retour.
